@@ -54,4 +54,14 @@ public class IngredientController {
         meals.removeIf(meal -> meal.getPrice() > price);
     }
 
+    @PutMapping("/meal/{name}/price")
+    public void updateMealPrice(@PathVariable String name, @RequestBody double updatedPrice) {
+        for (Meal meal : meals) {
+            if (meal.getName().equals(name)) {
+                meal.setPrice(updatedPrice);
+                break;
+            }
+        }
+    }
+
 }
